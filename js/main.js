@@ -2,17 +2,17 @@
 // ASDI 1304
 // javaScript for GPeS app
 
-$('#home').on('pageinit', function (){
+//$('#home').on('pageinit', function (){
 
 	
 	
 	
-});
+//});
 // Store form values to Local Storage.
 	var id			= Math.floor(Math.random()*100000001);
 $('#surveyInfo').on('pageinit', function(){
 
-	$('#submit').click(function(){
+	$('#submit').on('click', function(){
 		localStorage.setItem(id, $('#fname').val());
 		localStorage.setItem(id, $('#lname').val());
 		localStorage.setItem(id, $('#gValue').val());
@@ -42,7 +42,7 @@ $('#survey').on('pageinit', function (){
 		}
 		$('.storage').text(item)
 	}
-$('#survey').click(function(e){
+$('#survey').on('click', function(){
 	showStoreValue();
 });
 	
