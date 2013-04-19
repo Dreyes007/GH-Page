@@ -50,7 +50,8 @@
 					<ul data-role="listview" data-ajax="true" data-inset="true">
 						<li><a href="#error">Browse Stores</a></li>
 						<li><a href="#error">See Offers</a></li>
-						<li><a href="#error">Find a Location</a></li>		
+						<li><a href="#error">Find a Location</a></li>
+						<li><a href="#survey">Browse Surveys</a></li>		
 					</ul>
 					
 				</div>
@@ -67,6 +68,7 @@
 					</ul>					
 				</nav>
 			</footer>
+			
 			
 		</section>
 		
@@ -101,7 +103,7 @@
 					</section>
 					
 				<!--Gender Radio Buttons-->
-					<section data-role="controlgroup" data-mini="true">
+					<fieldset  data-role="controlgroup" data-mini="true">
 						<legend>Gender:</legend>						
 							<input type="radio" name="gender" id="radio-choice-1" value="choice-1" checked="checked" />
 							<label for="radio-choice-1">Male</label>
@@ -111,7 +113,7 @@
 						
 							<input type="radio" name="gender" id="radio-choice-3" value="choice-3" />
 							<label for="radio-choice-3">Undecided</label>					
-					</section>
+					</fieldset>
 					
 				<!--Date Select Menu-->
 				<section data-role="fieldcontain">
@@ -167,13 +169,13 @@
 				<!--Slider for Service-->
 				<section data-role="fieldcontain">
 					<label for="slider-1">Rate your experience? 1-Poor to 5-Excellent:</label>
-					<input type="range" name="slider-1" id="slider-1" value="5" min="1" max="5" data-highlight="true" data-popup-enable="true" />
+					<input type="range" name="rating" id="rating" value="5" min="1" max="5" data-highlight="true" data-popup-enable="true" />
 				</section>
 				
 				<!--Call Back Flip Toggle Switch-->
 				<section data-role="fieldcontain">
 					<label for="flip-1">Request a Call Back?:</label>
-						<select name="flip-1" id="flip-1" data-role="slider">
+						<select name="flip-1" id="callback" data-role="slider">
 							<option value="yes">YES</option>
 							<option value="no">NO</option>
 						</select>
