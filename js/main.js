@@ -11,11 +11,7 @@ $('#home').on('pageinit', function (){
 // Store form values to Local Storage.
 	var id			= Math.floor(Math.random()*100000001);
 $('#surveyInfo').on('pageinit', function(){
-	if(modernizr.localStorage){
-		$('#message').text("Form is ready");
-	}else{
-		$('#message').text("Local Storage Not Supported");
-	}
+
 	$('#submit').click(function(){
 		localStorage.setItem(id, $('#fname').val());
 		localStorage.setItem(id, $('#lname').val());
