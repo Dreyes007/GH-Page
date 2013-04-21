@@ -9,17 +9,29 @@
 	
 //});
 // Store form values to Local Storage.
-	var id			= Math.floor(Math.random()*100000001);
+	
 $('#surveyInfo').on('pageinit', function(){
 
-	$('#submit').on('click', function(){
-		localStorage.setItem(id, $('#fname').val());
-		localStorage.setItem(id, $('#lname').val());
-		localStorage.setItem(id, $('#gValue').val());
-		localStorage.setItem(id, $('#date').val());
-		localStorage.setItem(id, $('#rating').val());
-		localStorage.setItem(id, $('#callback').val());
-	});
+	function storeData(key){
+		//If there's no key, then its a brand new item and needs a new key
+		if(!key){
+			var id			= Math.floor(Math.random()*100000001);
+		}else{
+			//Set the id to the existing key we're editing so that it will save over the data.
+			//The key is the same key that's been passed along from the editSubmit event handler
+			//to the validate function, and then passed here into the storeData function.
+			id = key;
+		}
+		var item = {};
+		item.fname = ["First Name:", $('#fname').val()];
+		item.lname = ["Last Name:", $('#lname').val()];
+		item.gender = ["Gender:", gValue];
+		item.date = ["Date:", $('#date').val()];
+		item.rating = ["Rating:", $('#rating').val()];
+		item.callback = ["Callback:", $('#callback').val()];
+		localStorage.setItem(id, JSON.stringify(item));
+	};
+
 	
 	function getRadio(){
 		var radios = document.forms[0].gender;
@@ -30,20 +42,14 @@ $('#surveyInfo').on('pageinit', function(){
 		}	
 	}	
 });
-// Show store values from Local Storage
+// Show stored values from Local Storage
 $('#survey').on('pageinit', function (){
 	
 	function showStoreValue(){
-		var item = localStorage.getItem(id);
-		if (item == null){
-			item = 'Nothing in Storage';
-		}else if(item.length === 0){
-			item = 'Storage Contains Empty Value';
+		if(localStorage.length === 0){
+			alert("There is no data in local storage");
 		}
-		$('.storage').text(item)
-	}
-$('#survey').on('click', function(){
-	showStoreValue();
-});
 	
+	}
+	$('#survey').add("ul");
 });
