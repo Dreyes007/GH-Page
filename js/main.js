@@ -30,6 +30,7 @@ $('#surveyInfo').on('pageinit', function(){
 		item.rating = ["Rating:", $('#rating').val()];
 		item.callback = ["Callback:", $('#callback').val()];
 		localStorage.setItem(id, JSON.stringify(item));
+		alert("Information Saved!");
 	};
 
 	
@@ -51,5 +52,22 @@ $('#survey').on('pageinit', function (){
 		}
 	
 	}
-	$('#survey').add("ul");
+	$('<div></div>').addClass("info").appendTo('#survey');
+	$('#survey div').html('<ul></ul>');
+	for(var i=0, len=localStorage.length; i<len;i++){
+	$('#survey div ul').html('<li></li>');
+	
+	var key = localStorage.key(i);
+	var value = localStorage.getItem(key);
+	var obj = JSON.parse(value);
+	$('#survey div ul li').html('<ul></ul>');
+	
+	for(var n in obj){
+		$('#survey div ul li ul').html('<li></li>');
+		var optSubText = obj[n][0]+" "+obj[n][1];
+		console.log($('#survey li').html('optSubText'));
+		
+	}
+		
+	}
 });
