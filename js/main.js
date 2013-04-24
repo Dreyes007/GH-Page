@@ -12,7 +12,27 @@
 	
 $('#surveyInfo').on('pageinit', function(){
 
-	function storeData(key){
+	function validateInfo(key){
+		var myForm = $('#fillSurvey');
+		    myForm.validate({
+			invalidHandler: function(form, validator){
+			},
+			submitHandler: function() {
+		var data = myForm.serializeArray();
+			storeData(data,key);
+		}
+		})
+	};
+	
+	$('#submit').on('click', function(){
+		validateInfo();
+	});
+	
+	$('#reset').on('click', function(){
+		localStorage.clear()
+	});
+	
+	function storeData(data,key){
 		//If there's no key, then its a brand new item and needs a new key
 		if(!key){
 			var id			= Math.floor(Math.random()*100000001);
@@ -25,7 +45,7 @@ $('#surveyInfo').on('pageinit', function(){
 		var item = {};
 		item.fname = ["First Name:", $('#fname').val()];
 		item.lname = ["Last Name:", $('#lname').val()];
-		item.gender = ["Gender:", gValue];
+		item.gender = ["Gender:", getRadio()];
 		item.date = ["Date:", $('#date').val()];
 		item.rating = ["Rating:", $('#rating').val()];
 		item.callback = ["Callback:", $('#callback').val()];
@@ -65,7 +85,7 @@ $('#survey').on('pageinit', function (){
 	for(var n in obj){
 		$('#survey div ul li ul').html('<li></li>');
 		var optSubText = obj[n][0]+" "+obj[n][1];
-		console.log($('#survey li').html('optSubText'));
+		$('#survey').append('optSubText');
 		
 	}
 		
